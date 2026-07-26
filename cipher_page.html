@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title>Crypt Blog - Cipher Page</title>
+        <meta charset="utf-8">
+        <link type="text/css" rel="stylesheet" media="screen and (min-width: 450px)" href="laptopscreen.css">
+        <link type="text/css" rel="stylesheet" media="screen and (max-width: 400px)" href="phonescreen.css">
+        <link rel="stylesheet" href="https://pyscript.net/releases/2025.7.3/core.css"/>
+        <script type="module" src="https://pyscript.net/releases/2025.7.3/core.js"></script>
+        <script src="wheel.js"></script>
+        <script src="caesar.js"></script>
+    </head>
+
+    <body>
+        <a href="about.html">
+            <div class="banner">
+                <img src="banner.png" alt="Crypt Blog Banner">
+            </div>
+        </a>
+
+        <div class="navbar">
+            <a href="index.html">Home</a>
+            <a href="quizzes.html">Quizzes</a>
+            <a href="resources.html">Resources</a>
+            <a href="ciphers.html">Ciphers</a>
+            <a href="community.html">Community</a>
+        </div>
+
+        <div class="content">
+            <div class="main">
+
+                <div id="intro">
+                    <h1>Caesar Cipher</h1>
+                    <h3>One of the earlier ciphers within history</h3>
+                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+                </div>
+
+                <div id="history_section">
+                    <h2>History Time!</h2>
+                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+                </div>
+
+                <div id="implementation_section">
+                    <h2>How does the cipher actually work?</h2>
+                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+                </div>
+
+                <div id="encryption_section">
+                    <h2>Cipher Wheel</h2>
+
+                    <label for="text">Plaintext/Ciphertext</label><br><br>
+                    <input type="text" id="text" placeholder="Enter your plaintext here">
+
+                    <br><br><br>
+
+                    <label for="result">Result</label><br><br>
+                    <span id="result"></span>
+
+                    <br><br><br>
+
+                    <label for="key">Key: </label><br><br>
+                    <input type="number" id="key" placeholder="Enter the key here">
+
+                    <br><br><br>
+
+                    <label for="crypt_direction">Choose whether you are encrypting or decrypting below</label><br><br>
+                    <select name="crypt_direction" id="crypt_direction">
+                        <option value="encrypt">Encrypt</option>
+                        <option value="decrypt">Decrypt</option>
+                    </select>
+
+                    <br><br><br>
+
+                    <label for="cipher_choice">Choose your cipher below: </label><br><br>
+                    <select name="cipher_choice" id="cipher_choice">
+                        <option value="caesar">Caesar Cipher</option>
+                        <option value="substitution">Substitution</option>
+                    </select>
+
+                    <br><br><br>
+
+                    <div id="buttons_banner">
+                        <button id="crypt_button" class="col1">Decrypt/Encrypt</button>
+
+                        <br class="col2">
+
+                        <button id="reset_button" onclick="reset()" class="col3">Reset Wheel</button>
+
+                    </div>
+
+                    <br><br><br>
+
+                    <div id="wheel">
+                        <div id="wheel_container">
+                                <img id="outer_cipher_wheel" src="outer_wheel.png" alt="Outer Cipher Wheel that rotates">
+                                <img id="inner_cipher_wheel" src="inner_wheel.png" alt="Inner Cipher Wheel that is stationery">
+                        </div>
+                    </div>
+
+                    <br><br><br>
+                </div>
+            </div>
+        </div>
+
+        <div id="footer_header">
+            <!-- title attribute is a tooltip (when you hover over something it displays what's in it as a black box)-->
+            <p title="Hope you enjoy :)">Cipher Blog</p>
+        </div>
+        <div class="footer">
+            <div class="col1">
+                <a href="about.html"> About Us </a>
+
+                <br><br>
+
+                <a href="about.html"> Mission & Values </a>
+
+                <br><br>
+
+                <a href="about.html"> How to Join </a>
+            </div>
+
+            <div class="col2">
+                <a href="about.html"> Cookie Usage </a>
+
+                <br><br>
+
+                <a href="about.html"> Terms & Conditions </a>
+
+                <br><br>
+
+                <a href="about.html"> Privacy Notice </a>
+            </div>
+
+            <div class="col3">
+                <a href="about.html"> Accessibility </a>
+
+                <br><br>
+
+                <a href="about.html"> Contact Us </a>
+
+                <br><br>
+
+                <a href="about.html"> Social Media </a>
+            </div>
+        </div>
+    </body>
+
+    <script>
+
+        document.getElementById("crypt_button").addEventListener("click", choose_cipher)
+
+        function choose_cipher() {
+            let result = "";
+            const text = document.getElementById("text").value;
+            const key = document.getElementById("key").value;
+            const mode = document.getElementById("crypt_direction").value;
+            const cipher = document.getElementById("cipher_choice").value;
+            if (cipher === "caesar") {
+                result = caesar_cipher(mode, text, key);
+            }
+
+            document.getElementById("result").innerText = result;
+            wheel(key, mode);
+        }
+    </script>
+</html>
