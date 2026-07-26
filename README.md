@@ -1,6 +1,11 @@
 # Cryptography Website
+Cryptography-focused blog website that teachers users about different ciphers and historical cryptographic methods
 
 ---------------------------------------------------------------------------------------------------------
+
+Current Stage: MVP Stage
+
+--------------------------------------------------------------------------------------------------------
 
 Hello, whilst on the Stemettes Mentoring Programme, I wanted to challenge myself to build something to brush up on my HTML and CSS skills from before in secondary school. Creating a website to teach people about cryptography has always been something on my mind. I loved competing in the University of Southampton's National Cipher Challenge and I wanted to share that love forward through the website.
 
