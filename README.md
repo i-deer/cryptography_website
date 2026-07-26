@@ -3,7 +3,7 @@ Cryptography-focused blog website that teachers users about different ciphers an
 
 ---------------------------------------------------------------------------------------------------------
 
-Current Stage: MVP Stage
+Current Stage: MVP
 
 --------------------------------------------------------------------------------------------------------
 
